@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class EmarketApiServiceApplication {
+public class ApiServiceApplication {
 
   public static void main(String[] args) {
-    SpringApplication.run(EmarketApiServiceApplication.class, args);
+    SpringApplication.run(ApiServiceApplication.class, args);
   }
 
 }
