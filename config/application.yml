@@ -1,0 +1,35 @@
+server:
+  port: 3000
+#  servlet:
+#    context-path: /api
+
+logging:
+  level:
+    root: info
+
+mybatis:
+  type-aliases-package: kr.emarket.api.vo, kr.emarket.api.dto
+  mapper-locations:
+    - classpath:mapper/**.xml
+    - classpath:mapper/**/**.xml
+  configuration:
+    call-setters-on-nulls: true
+    map-underscore-to-camel-case: true
+
+spring:
+  application:
+    name: emarket-api
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      connection-timeout: 60000
+      max-lifetime: 900000
+      maximum-pool-size: 10
+      minimum-idle: 10
+      pool-name: ApiConnPool
+      connection-test-query: select 1 from dual
+      auto-commit: false
+    url: jdbc:mariadb://34.64.39.44:3306/mg_db
+    username: mg_dba
+    password: dlakzptmg!@#
+    driver-class-name: org.mariadb.jdbc.Driver
