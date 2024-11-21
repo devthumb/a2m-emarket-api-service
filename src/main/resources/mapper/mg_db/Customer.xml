@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.emarket.api.mapper.mg.CustomerMapper">
+
+  <select id="getCustomers" resultType="CustomerVO">
+    select *
+    from mdms_cust_info
+  </select>
+
+  <select id="getCustomer" resultType="CustomerVO" parameterType="String">
+    select *
+    from mdms_cust_info
+    where cntr_no = #{cntrNo}
+  </select>
+</mapper>
