@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.emarket.api.mapper.mg.ResourceMapper">
+  <select id="getResources" resultType="ResourceVO" parameterType="ResourceRequest">
+    select b.CUSTOMER_NO
+         , a.*
+    from common_mg_resource a
+    left join common_mg_info b
+        on b.MG_ID = a.MG_ID
+        and b.PROJECT_ID = a.PROJECT_ID
+    <where>
+      <if test="customerNo != null and !''.equals(customerNo)">
+        b.CUSTOMER_NO = #{customerNo}
+      </if>
+      <if test="projectId != null and !''.equals(projectId)">
+        and a.PROJECT_ID = #{projectId}
+      </if>
+      <if test="mgResourceId != null and !''.equals(mgResourceId)">
+        and a.MG_RESOURCE_ID = #{mgResourceId}
+      </if>
+    </where>
+  </select>
+
+  <select id="getResource" resultType="ResourceVO" parameterType="String">
+    select a.*
+    from common_mg_resource a
+    where a.PROJECT_ID = #{projectId}
+      and a.MG_RESOURCE_ID = #{mgResourceId}
+  </select>
+</mapper>
