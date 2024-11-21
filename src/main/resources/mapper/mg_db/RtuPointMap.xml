@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.emarket.api.mapper.mg.RtuPointMapMapper">
+
+  <select id="getRtuPointMaps" resultType="RtuPointMapVO">
+    select a.PROJECT_ID
+         , a.MG_ID
+         , a.MG_NM
+         , a.CUSTOMER_NO
+         , b.MG_RESOURCE_ID
+         , b.RSC_NM
+         , b.RTU_ID
+         , b.RSC_KND_CD
+         , c.IED_ID
+         , c.RTU_PNT_MAP_ID
+         , c.DA_OBJ_REF
+         , d.name
+         , d.DESCRIPTION
+         , d.DATA_TYPE_CD
+    from common_mg_info a
+    left join common_mg_resource b
+      on b.MG_ID = a.MG_ID
+      and b.PROJECT_ID = a.PROJECT_ID
+      and RSC_KND_CD = 1
+    left join dccp_ied_rtu_attr_mpng c
+      on c.RTU_ID = b.RTU_ID
+      and c.PROJECT_ID = b.PROJECT_ID
+    inner join dccp_rtu_pnt_map d
+      on d.RTU_PNT_MAP_ID = c.RTU_PNT_MAP_ID
+      and d.PROJECT_ID = b.PROJECT_ID
+#       and DATA_TYPE_CD = 4
+    <where>
+      <if test="customerNo != null and !''.equals(customerNo)">
+        a.CUSTOMER_NO = #{customerNo}
+      </if>
+    </where>
+  </select>
+</mapper>
