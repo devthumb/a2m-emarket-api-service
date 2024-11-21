@@ -1,23 +1,28 @@
 package kr.emarket.api.vo;
 
 
+import java.time.LocalDateTime;
 import lombok.Getter;
 import lombok.ToString;
 
 @Getter
 @ToString
 public class CustomerVO {
-  private String cntrNo;
-  private String aplyStYmd;
-  private String aplyEndYmd;
+  private Integer projectId;
+  private Integer mgId;
+  private String mgNm;
+  private String customerNo;
   private Integer cntrPwr;
-  private String lhvClcd;
-  private String mrDd;
-  private String hdqrCd;
-  private String brofCd;
-  private String sidoCd;
-  private String sgngCd;
-  private String dongCd;
-  private String custNm;
-  private String trna;
+  private String svcKndCd;
+  private String custKndCd;
+  private String mdmsYn;
+  private String ksicCd;
+  private Integer idstryCplxAreaId;
+  private Integer dlId;
+  private String tel;
+  private String addr;
+  private String geom;
+  private String useYn;
+  private LocalDateTime regDate;
+  private String custImg;
 }
