@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface ResourceMapper {
-  public List<ResourceVO> getResources(ResourceRequest resourceRequest);
-  public ResourceVO getResource(String projectId, String mgResourceId);
+  List<ResourceVO> getResources(ResourceRequest resourceRequest);
+  ResourceVO getResource(String projectId, String mgResourceId);
 }
 

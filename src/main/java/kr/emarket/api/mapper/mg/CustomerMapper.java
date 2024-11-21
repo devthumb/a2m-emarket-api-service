@@ -6,6 +6,6 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface CustomerMapper {
-  public List<CustomerVO> getCustomers();
-  public CustomerVO getCustomer(String cntrNo);
+  List<CustomerVO> getCustomers();
+  CustomerVO getCustomer(String cntrNo);
 }
