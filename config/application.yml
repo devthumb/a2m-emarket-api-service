@@ -1,5 +1,5 @@
 server:
-  port: 3000
+  port: 3001
 #  servlet:
 #    context-path: /api
 
@@ -33,3 +33,67 @@ spring:
     username: mg_dba
     password: dlakzptmg!@#
     driver-class-name: org.mariadb.jdbc.Driver
+
+atom:
+  auth:
+    hmac:
+      api:
+        enabled: true
+        credentials:
+          8c2ea66e-abfc-4394-8adb-fa52890bdce3: 982064c6-c265-11ed-afa1-0242ac120002
+          ee371218-e07f-449f-9733-b2860087e871: ffd0a7e3-2c8c-4119-ab74-f2821884a003
+          b06c4895-119e-4bcb-be09-5d1bad07b035: 17513a20-a446-465c-8354-fba15becb571
+        header:
+          nonce: Nonce
+          access-key: Access-Key
+          authorization: Authorization
+          algorithm: Algorithm
+        issuer:
+          enabled: true
+          end-point: /auth/hmac/issue
+          algorithm: HmacSHA256
+        verifier:
+          enabled: true
+          end-point: /auth/hmac/verify
+          method: "*"
+          expires: 300000  # seconds
+#          attribute-mark-as: isVerifiedHmacRequest2
+        checker:
+          enabled: true
+#          attribute-mark-as: isHmacRequest2
+#          order: -2
+#          allowed-requests:
+#            - /auth/hmac/test/a
+#            - /**
+#            - /auth/hmac/test/b
+#          disallowed-requests:
+#            - /auth/hmac/test/b/**
+#          disallowed-requests-first: true
+        skip-manager:
+          enabled: true
+#          allowed-filters:
+#            - org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy
+##            - org.springframework.web.servlet.handler.**
+#            - org.springframework.security.web.FilterChainProxy
+#            - org.springframework.security.web.context.SecurityContextHolderFilter
+##            - org.springframework.security.web.authentication.logout.LogoutFilter
+##            - org.springframework.security.web.savedrequest.RequestCacheAwareFilter
+##            - org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter
+##            - org.springframework.security.web.access.ExceptionTranslationFilter
+#            - org.springframework.security.web.access.intercept.AuthorizationFilter
+#          allowed-filters:
+#            - org.springframework.security.**
+#            - com.a2m.atom.cloud.auth.hmac.test.api.**
+#            - com.a2m.atom.cloud.auth.hmac.test.api.filter.HmacNextFilter
+#          disallowed-filters:
+#            - org.springframework.security.**
+#            - com.a2m.atom.cloud.auth.hmac.test.api.**
+#            - com.a2m.atom.cloud.auth.hmac.test.api.filter.HmacNextFilter
+#          disallowed-filters-first: true
+#          allowed-interceptors:
+#            - org.springframework.web.**
+#            - com.a2m.atom.cloud.auth.hmac.test.api.filter.HmacNextInterceptor
+#          disallowed-interceptors:
+#            - org.springframework.web.**
+#            - com.a2m.atom.cloud.auth.hmac.test.api.filter.HmacNextInterceptor
+#          disallowed-interceptors-first: true
