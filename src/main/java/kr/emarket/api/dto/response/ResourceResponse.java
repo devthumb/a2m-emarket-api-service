@@ -1,6 +1,7 @@
 package kr.emarket.api.dto.response;
 
 
+import java.time.LocalDateTime;
 import kr.emarket.api.vo.ResourceVO;
 import lombok.Builder;
 import lombok.Getter;
@@ -13,6 +14,7 @@ import lombok.ToString;
 @ToString
 public class ResourceResponse {
   private String customerNo;
+
   private String projectId;
   private String mgResourceId;
   private String rscNm;
@@ -26,6 +28,11 @@ public class ResourceResponse {
   private String devTypeCd;
   private String devCapa;
   private String devCapaUnitId;
+  private String useClcd;
+  private Integer rtuId;
+  private Integer mgId;
+  private String useYn;
+  private LocalDateTime regDate;
 
   public static ResourceResponse fromVO(ResourceVO resourceVO) {
     return ResourceResponse.builder()
@@ -43,6 +50,11 @@ public class ResourceResponse {
         .devTypeCd(resourceVO.getDevTypeCd())
         .devCapa(resourceVO.getDevCapa())
         .devCapaUnitId(resourceVO.getDevCapaUnitId())
+        .useClcd(resourceVO.getUseClcd())
+        .rtuId(resourceVO.getRtuId())
+        .mgId(resourceVO.getMgId())
+        .useYn(resourceVO.getUseYn())
+        .regDate(resourceVO.getRegDate())
         .build();
   }
 }

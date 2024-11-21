@@ -1,6 +1,7 @@
 package kr.emarket.api.vo;
 
 
+import java.time.LocalDateTime;
 import lombok.Getter;
 import lombok.ToString;
 
@@ -8,6 +9,7 @@ import lombok.ToString;
 @ToString
 public class ResourceVO {
   private String customerNo;
+
   private String projectId;
   private String mgResourceId;
   private String rscNm;
@@ -21,4 +23,9 @@ public class ResourceVO {
   private String devTypeCd;
   private String devCapa;
   private String devCapaUnitId;
+  private String useClcd;
+  private Integer rtuId;
+  private Integer mgId;
+  private String useYn;
+  private LocalDateTime regDate;
 }
