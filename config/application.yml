@@ -39,6 +39,17 @@ atom:
     hmac:
       api:
         enabled: true
+        signature:
+          messages:
+            - Host
+            - Scheme
+            - ContentType
+            - Method
+            - Path
+            - Query
+            - Body
+            - Nonce
+          delimiter: ""
         credentials:
           8c2ea66e-abfc-4394-8adb-fa52890bdce3: 982064c6-c265-11ed-afa1-0242ac120002
           ee371218-e07f-449f-9733-b2860087e871: ffd0a7e3-2c8c-4119-ab74-f2821884a003
