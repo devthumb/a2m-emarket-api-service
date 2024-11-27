@@ -9,4 +9,3 @@ import org.apache.ibatis.annotations.Mapper;
 public interface RtuPointMapMapper {
   List<RtuPointMapVO> getRtuPointMaps(RtuPointMapRequest rtuPointMapRequest);
 }
-

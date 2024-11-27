@@ -6,36 +6,56 @@
 <mapper namespace="kr.emarket.api.mapper.mg.RtuPointMapMapper">
 
   <select id="getRtuPointMaps" resultType="RtuPointMapVO">
-    select a.PROJECT_ID
-         , a.MG_ID
-         , a.MG_NM
-         , a.CUSTOMER_NO
-         , b.MG_RESOURCE_ID
-         , b.RSC_NM
-         , b.RTU_ID
-         , b.RSC_KND_CD
-         , c.IED_ID
-         , c.RTU_PNT_MAP_ID
-         , c.DA_OBJ_REF
-         , d.name
-         , d.DESCRIPTION
-         , d.DATA_TYPE_CD
-    from common_mg_info a
-    left join common_mg_resource b
-      on b.MG_ID = a.MG_ID
-      and b.PROJECT_ID = a.PROJECT_ID
-      and RSC_KND_CD = 1
-    left join dccp_ied_rtu_attr_mpng c
-      on c.RTU_ID = b.RTU_ID
-      and c.PROJECT_ID = b.PROJECT_ID
-    inner join dccp_rtu_pnt_map d
-      on d.RTU_PNT_MAP_ID = c.RTU_PNT_MAP_ID
-      and d.PROJECT_ID = b.PROJECT_ID
-#       and DATA_TYPE_CD = 4
-    <where>
+    SELECT mg.CUSTOMER_NO as customerNo
+         , mg.MG_ID as mgId
+         , mg.MG_RESOURCE_ID as mgResourceId
+         , mg.NAME as name
+         , mg.DESCRIPTION as description
+         , mg.DA_OBJ_REF as daObjRef
+         , mg.DA_NAME as daName
+         , v.s_value AS val
+         , t.s_value AS updTime
+         , v.btype AS valBtype
+         , t.btype AS timeBtype
+    FROM (
+      SELECT a.CUSTOMER_NO
+           , a.MG_ID
+           , b.MG_RESOURCE_ID
+           , d.NAME
+           , d.DESCRIPTION
+           , e.DA_OBJ_REF
+           , d.DA_NAME
+      FROM mg_common_mg_info a,
+           mg_common_mg_resource b,
+           mg_dccp_rtu c,
+           mg_dccp_rtu_pnt_map d,
+           mg_dccp_ied_rtu_attr_mpng e
+      WHERE a.PROJECT_ID = b.PROJECT_ID
+      AND a.MG_ID = b.MG_ID
+      AND b.PROJECT_ID = c.PROJECT_ID
+      AND b.RTU_ID = c.RTU_ID
+      AND c.PROJECT_ID = d.PROJECT_ID
+      AND c.RTU_TYPE_ID = d.RTU_TYPE_ID
+      AND d.PROJECT_ID = e.PROJECT_ID
+      AND d.RTU_PNT_MAP_ID = e.RTU_PNT_MAP_ID
+      AND c.RTU_ID = e.RTU_ID
+      AND a.PROJECT_ID = '84'
+      AND b.RSC_KND_CD = '1'
+      /* 고객번호가 있을 경우 AND CUSTOMER_NO = #{customerNo} */
       <if test="customerNo != null and !''.equals(customerNo)">
-        a.CUSTOMER_NO = #{customerNo}
+        AND a.CUSTOMER_NO = #{customerNo}
       </if>
-    </where>
+      AND (
+          e.DA_OBJ_REF LIKE '%GGIO1.Ind1.stVal'
+          OR e.DA_OBJ_REF LIKE '%MMXU1%'
+          OR e.DA_OBJ_REF LIKE '%MMDC1%'
+          OR e.DA_OBJ_REF LIKE '%AnIn9.mag.f'
+          OR e.DA_OBJ_REF LIKE '%AnIn10.mag.f'
+      )
+    ) mg
+    LEFT JOIN mg_rt_da v
+        ON v.ied_obj_ref = mg.DA_OBJ_REF
+    LEFT JOIN mg_rt_da t
+        ON t.ied_obj_ref = REPLACE(mg.DA_OBJ_REF, mg.DA_NAME, 't');
   </select>
 </mapper>
