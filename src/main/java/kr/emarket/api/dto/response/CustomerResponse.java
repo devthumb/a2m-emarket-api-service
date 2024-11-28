@@ -1,6 +1,7 @@
 package kr.emarket.api.dto.response;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.time.LocalDateTime;
 import kr.emarket.api.vo.CustomerVO;
 import lombok.Builder;
@@ -13,44 +14,28 @@ import lombok.ToString;
 @Setter
 @ToString
 public class CustomerResponse {
-  private Integer projectId;
+  @JsonProperty("MG_ID")
   private Integer mgId;
+  @JsonProperty("MG_NM")
   private String mgNm;
+  @JsonProperty("CUSTOMER_NO")
   private String customerNo;
+  @JsonProperty("CNTR_PWR")
   private Integer cntrPwr;
-  private String svcKndCd;
-  private String custKndCd;
-  private String mdmsYn;
-  private String ksicCd;
-  private Integer idstryCplxAreaId;
-  private Integer dlId;
+  @JsonProperty("TEL")
   private String tel;
+  @JsonProperty("ADDR")
   private String addr;
-  private String geom;
-  private String useYn;
-  private LocalDateTime regDate;
-  private String custImg;
 
   public static CustomerResponse fromVO(CustomerVO customerVO) {
     return customerVO != null ?
         CustomerResponse.builder()
-            .projectId(customerVO.getProjectId())
             .mgId(customerVO.getMgId())
             .mgNm(customerVO.getMgNm())
             .customerNo(customerVO.getCustomerNo())
             .cntrPwr(customerVO.getCntrPwr())
-            .svcKndCd(customerVO.getSvcKndCd())
-            .custKndCd(customerVO.getCustKndCd())
-            .mdmsYn(customerVO.getMdmsYn())
-            .ksicCd(customerVO.getKsicCd())
-            .idstryCplxAreaId(customerVO.getIdstryCplxAreaId())
-            .dlId(customerVO.getDlId())
             .tel(customerVO.getTel())
             .addr(customerVO.getAddr())
-            .geom(customerVO.getGeom())
-            .useYn(customerVO.getUseYn())
-            .regDate(customerVO.getRegDate())
-            .custImg(customerVO.getCustImg())
             .build()
         : null;
   }
