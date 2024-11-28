@@ -38,7 +38,7 @@ atom:
   auth:
     hmac:
       api:
-        enabled: true
+        enabled: false
         signature:
           messages:
             - Host
@@ -67,7 +67,7 @@ atom:
           enabled: true
           end-point: /auth/hmac/verify
           method: "*"
-          expires: 300000  # seconds
+          nonce-expires: 300000  # seconds
 #          attribute-mark-as: isVerifiedHmacRequest2
         checker:
           enabled: true
