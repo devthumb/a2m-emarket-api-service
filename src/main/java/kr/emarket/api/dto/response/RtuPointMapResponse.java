@@ -2,6 +2,7 @@ package kr.emarket.api.dto.response;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.kdn.kgrid.mg.common.utils.DataConverter4IEC61850;
 import kr.emarket.api.vo.RtuPointMapVO;
 import lombok.Builder;
 import lombok.Getter;
@@ -26,13 +27,10 @@ public class RtuPointMapResponse {
   @JsonProperty("DA_NAME")
   private String daName;
   @JsonProperty("VAL")
-  private byte[] val;
+  private String val;
   @JsonProperty("UPD_TIME")
-  private byte[] updTime;
-  @JsonProperty("VAL_B_TYPE")
-  private String valBtype;
-  @JsonProperty("TIME_B_TYPE")
-  private String timeBtype;
+  private String updTime;
+
 
   public static RtuPointMapResponse fromVO(RtuPointMapVO rtuPointMapVO) {
     return RtuPointMapResponse.builder()
@@ -42,10 +40,8 @@ public class RtuPointMapResponse {
         .description(rtuPointMapVO.getDescription())
         .daObjRef(rtuPointMapVO.getDaObjRef())
         .daName(rtuPointMapVO.getDaName())
-        .val(rtuPointMapVO.getVal())
-        .updTime(rtuPointMapVO.getUpdTime())
-        .valBtype(rtuPointMapVO.getValBtype())
-        .timeBtype(rtuPointMapVO.getTimeBtype())
+        .val(DataConverter4IEC61850.getValueString(rtuPointMapVO.getValBtype(), rtuPointMapVO.getVal()))
+        .updTime(DataConverter4IEC61850.getValueString(rtuPointMapVO.getTimeBtype(), rtuPointMapVO.getUpdTime()))
         .build();
   }
 }
