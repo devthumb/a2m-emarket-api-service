@@ -6,5 +6,5 @@ import kr.emarket.api.dto.response.ResourceResponse;
 
 public interface ResourceService {
   List<ResourceResponse> getResources(ResourceRequest resourceRequest);
-  ResourceResponse getResource(String projectId,String mgResourceId);
+  List<ResourceResponse> getResource(String customerNo);
 }

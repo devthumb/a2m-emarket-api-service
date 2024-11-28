@@ -8,24 +8,24 @@ import lombok.ToString;
 @Getter
 @ToString
 public class ResourceVO {
-  private String customerNo;
-
-  private String projectId;
+  private Integer mgId;
   private String mgResourceId;
   private String rscNm;
-  private Integer rscKndCd;
   private String rscCapa;
+  private String devCapa;
+
+  private String customerNo;
+  private String projectId;
+  private Integer rscKndCd;
   private String rscCapaUnitId;
   private String meaYn;
   private String maaTestYn;
   private String cntlYn;
   private String cntrTestYn;
   private String devTypeCd;
-  private String devCapa;
   private String devCapaUnitId;
   private String useClcd;
   private Integer rtuId;
-  private Integer mgId;
   private String useYn;
   private LocalDateTime regDate;
 }

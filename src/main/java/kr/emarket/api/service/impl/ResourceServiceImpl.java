@@ -20,7 +20,7 @@ public class ResourceServiceImpl implements ResourceService {
   }
 
   @Override
-  public ResourceResponse getResource(String projectId, String mgResourceId) {
-    return ResourceResponse.fromVO(resourceMapper.getResource(projectId, mgResourceId));
+  public List<ResourceResponse> getResource(String customerNo) {
+    return resourceMapper.getResource(customerNo).stream().map(ResourceResponse::fromVO).toList();
   }
 }
