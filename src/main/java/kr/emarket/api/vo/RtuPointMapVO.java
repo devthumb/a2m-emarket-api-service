@@ -18,5 +18,4 @@ public class RtuPointMapVO {
   private byte[] updTime;
   private String valBtype;
   private String timeBtype;
-
 }
