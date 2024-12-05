@@ -1,0 +1,40 @@
+atom:
+  auth:
+    hmac:
+      api:
+        enabled: true
+        configuration-provider:
+          enabled: true
+        signature:
+          messages:
+#            - Scheme
+#            - Host
+#            - Method
+#            - ContentType
+#            - Path
+#            - Query
+#            - Body
+#            - Nonce
+          delimiter: ", "
+        credentials:
+          8c2ea66e-abfc-4394-8adb-fa52890bdce3: 982064c6-c265-11ed-afa1-0242ac120002
+          ee371218-e07f-449f-9733-b2860087e871: ffd0a7e3-2c8c-4119-ab74-f2821884a003
+          b06c4895-119e-4bcb-be09-5d1bad07b035: 17513a20-a446-465c-8354-fba15becb571
+        header:
+          nonce: Nonce
+          access-key: Access-Key
+          authorization: Authorization
+          algorithm: Algorithm
+        issuer:
+          enabled: true
+          end-point: /auth/hmac/issue
+          algorithm: HmacSHA256
+        verifier:
+          enabled: true
+          end-point: /auth/hmac/verify
+          method: "*"
+          nonce-expires: -1  # seconds
+        checker:
+          enabled: true
+        skip-manager:
+          enabled: true
