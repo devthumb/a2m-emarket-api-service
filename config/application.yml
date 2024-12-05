@@ -1,11 +1,16 @@
 server:
   port: 3001
 #  servlet:
-#    context-path: /api
+#    context-path: /b
 
 logging:
   level:
     root: info
+  logging:
+    config: config/logback.xml
+    pattern:
+      correlation: "[${spring.application.name:},%X{traceId:-},%X{spanId:-}] "
+    include-application-name: false
 
 mybatis:
   type-aliases-package: kr.emarket.api.vo, kr.emarket.api.dto
@@ -18,7 +23,7 @@ mybatis:
 
 spring:
   application:
-    name: emarket-api
+    name: vasco-api-service
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     hikari:
