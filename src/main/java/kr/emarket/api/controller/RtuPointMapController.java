@@ -13,18 +13,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("/measure/data")
+@RequestMapping("/data/pv")
 @RequiredArgsConstructor
 public class RtuPointMapController {
 
   private final RtuPointMapService rtuPointMapService;
 
-  @GetMapping("/pv")
+  @GetMapping("/all")
   public ResponseEntity<List<RtuPointMapResponse>> getData(RtuPointMapRequest rtuPointMapRequest) {
     return ResponseEntity.ok(rtuPointMapService.getRtuPointMaps(rtuPointMapRequest));
   }
 
-  @GetMapping("/pv/{customerNo}")
+  @GetMapping("/{customerNo}")
   public ResponseEntity<List<RtuPointMapResponse>> getData(@PathVariable String customerNo) {
     RtuPointMapRequest rtuPointMapRequest = new RtuPointMapRequest();
     rtuPointMapRequest.setCustomerNo(customerNo);

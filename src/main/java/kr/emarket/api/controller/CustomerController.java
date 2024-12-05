@@ -11,20 +11,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
-@RequestMapping("/common/mg-info")
+@RequestMapping("/customer/info")
 @RestController
 @RequiredArgsConstructor
 public class CustomerController {
 
   private final CustomerService customerService;
 
-  @GetMapping("/allCustomer")
+  @GetMapping("/all")
   public ResponseEntity<List<CustomerResponse>> getCustomers() {
     return ResponseEntity.ok(customerService.getCustomers());
   }
 
-  @GetMapping("/findByCustomer/{cntrNo}")
-  public ResponseEntity<CustomerResponse> getCustomer(@PathVariable String cntrNo) {
-    return ResponseEntity.ok(customerService.getCustomer(cntrNo));
+  @GetMapping("/{customerNo}")
+  public ResponseEntity<CustomerResponse> getCustomer(@PathVariable String customerNo) {
+    return ResponseEntity.ok(customerService.getCustomer(customerNo));
   }
 }

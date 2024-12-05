@@ -12,19 +12,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
-@RequestMapping("/common/mg-resource")
+@RequestMapping("/customer/resource")
 @RestController
 @RequiredArgsConstructor
 public class ResourceController {
 
   private final ResourceService resourceService;
 
-  @GetMapping("/allCustomer")
+  @GetMapping("/all")
   public ResponseEntity<List<ResourceResponse>> getResources(ResourceRequest resourceRequest) {
     return ResponseEntity.ok(resourceService.getResources(resourceRequest));
   }
 
-  @GetMapping("/findByCustomer/{customerNo}")
+  @GetMapping("/{customerNo}")
   public ResponseEntity<List<ResourceResponse>> getResource(@PathVariable String customerNo) {
     return ResponseEntity.ok(resourceService.getResource(customerNo));
   }
