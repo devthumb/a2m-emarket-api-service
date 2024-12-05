@@ -8,11 +8,13 @@
   <select id="getCustomers" resultType="CustomerVO">
     select *
     from mg_common_mg_info
+    where PROJECT_ID = 84
   </select>
 
   <select id="getCustomer" resultType="CustomerVO" parameterType="String">
     select *
     from mg_common_mg_info
-    where CUSTOMER_NO = #{cntrNo}
+    where PROJECT_ID = 84
+      and CUSTOMER_NO = #{cntrNo}
   </select>
 </mapper>

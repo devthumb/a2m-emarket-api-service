@@ -30,7 +30,8 @@
            mg_dccp_rtu c,
            mg_dccp_rtu_pnt_map d,
            mg_dccp_ied_rtu_attr_mpng e
-      WHERE a.PROJECT_ID = b.PROJECT_ID
+      WHERE a.PROJECT_ID = 84
+      AND a.PROJECT_ID = b.PROJECT_ID
       AND a.MG_ID = b.MG_ID
       AND b.PROJECT_ID = c.PROJECT_ID
       AND b.RTU_ID = c.RTU_ID

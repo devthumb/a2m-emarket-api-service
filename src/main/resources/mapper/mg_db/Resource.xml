@@ -11,6 +11,7 @@
          , a.RSC_CAPA
          , a.DEV_CAPA
     from mg_common_mg_resource a
+    where PROJECT_ID = 84
   </select>
 
   <select id="getResource" resultType="ResourceVO" parameterType="String">
@@ -23,6 +24,7 @@
     inner join mg_common_mg_info b
         on b.MG_ID = a.MG_ID
         and b.PROJECT_ID = a.PROJECT_ID
-    where b.CUSTOMER_NO = #{customerNo};
+    where a.PROJECT_ID = 84
+      and b.CUSTOMER_NO = #{customerNo}
   </select>
 </mapper>
