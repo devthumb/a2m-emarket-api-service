@@ -62,13 +62,24 @@
       <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
 
-
-
+    <!-- auth-hmac -->
     <dependency>
       <groupId>com.a2m.atom.cloud</groupId>
       <artifactId>auth-hmac</artifactId>
       <version>1.0.0-SNAPSHOT</version>
     </dependency>
+
+
+
+    <!-- kdn data-converter (lib/README.md 참조) -->
+    <!-- package 시 누락 -->
+<!--    <dependency>-->
+<!--      <groupId>com.kdn.kgrid.mg</groupId>-->
+<!--      <artifactId>kgrid-mg-common</artifactId>-->
+<!--      <version>1.0</version>-->
+<!--      <scope>system</scope>-->
+<!--      <systemPath>${project.basedir}/lib/kgrid-mg-common-1.0.jar</systemPath>-->
+<!--    </dependency>-->
 
     <dependency>
       <groupId>jakarta.xml.bind</groupId>
@@ -80,19 +91,21 @@
       <artifactId>jaxb-runtime</artifactId>
       <version>3.0.1</version>
     </dependency>
-
+    <dependency>
+      <groupId>org.hyperic</groupId>
+      <artifactId>sigar</artifactId>
+      <version>1.6.4</version>
+    </dependency>
     <dependency>
       <groupId>com.kdn.kgrid.mg</groupId>
       <artifactId>kgrid-mg-common</artifactId>
       <version>1.0</version>
-      <scope>system</scope>
-      <systemPath>${project.basedir}/lib/kgrid-mg-common-1.0.jar</systemPath>
     </dependency>
   </dependencies>
 
   <build>
     <directory>${basedir}/target</directory>
-    <finalName>api</finalName>
+    <finalName>${name}</finalName>
     <plugins>
       <plugin>
         <groupId>org.springframework.boot</groupId>
